@@ -1,0 +1,18 @@
+hoursToMonitor: 9
+delayTimeInMinutes: 0.1
+flows:
+  - flow:
+      name : authenticacion
+      steps :
+        - step:
+            name: "auth"
+            caller: Requests.authorization_requests_caller
+  - flow:
+      name: fondos_inversion
+      steps:
+        - step:
+            name: "auth"
+            caller: Requests.authorization_requests_caller
+        - step:
+            name: "funds"
+            caller: src.requests.funds_request_caller

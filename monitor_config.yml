@@ -1,0 +1,10 @@
+hoursToMonitor: 9
+delayTimeInMinutes: 0.01
+flows:
+  - flow:
+      type : json
+      name : authenticacion
+      steps:
+        - step:
+            name: "auth"
+            caller: src.requests.authorization_requests_caller
