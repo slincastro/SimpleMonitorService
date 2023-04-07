@@ -1,8 +1,5 @@
-import pytest
-import pytest_cov
-
 from src.managers.FlowManager import FlowManager
-from src.configuration.Configuration import Configuration
+from src.infrastructure.configuration.Configuration import Configuration
 
 flow_authentication_requested_name = 'authenticacion'
 flow_funds_requested_name = 'fondos_inversion'
@@ -34,7 +31,7 @@ def test_should_get_type_when_non_existing_flow_name_is_send():
 def test_should_get_callers_when_funds_name_is_sent():
     configuration = get_configuration()
     service_caller = FlowManager(flow_funds_requested_name,configuration).get_callers()
-    assert service_caller == ['Requests.authorization_requests_caller', 'src.requests.funds_request_caller']
+    assert service_caller == ['Requests.authorization_requests_caller', 'src.infrastructure.funds_request_caller']
 
 def test_should_get_callers_when_auth_name_is_sent():
     configuration = get_configuration()

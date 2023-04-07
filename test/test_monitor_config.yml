@@ -15,4 +15,4 @@ flows:
             caller: Requests.authorization_requests_caller
         - step:
             name: "funds"
-            caller: src.requests.funds_request_caller
+            caller: src.infrastructure.funds_request_caller

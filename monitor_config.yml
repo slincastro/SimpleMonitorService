@@ -7,4 +7,4 @@ flows:
       steps:
         - step:
             name: "auth"
-            caller: src.requests.authorization_requests_caller
+            caller: src.infrastructure.callers.authorization_requests_caller
