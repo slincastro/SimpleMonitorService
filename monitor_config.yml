@@ -2,9 +2,29 @@ hoursToMonitor: 9
 delayTimeInMinutes: 0.01
 flows:
   - flow:
-      type : json
       name : authenticacion
       steps:
         - step:
-            name: "auth"
-            caller: src.infrastructure.callers.authorization_requests_caller
+            name: "auth-sf"
+            caller: src.infrastructure.callers.authorization_requests.get_request_with_sf
+        - step:
+            name: "auth-d"
+            caller: src.infrastructure.callers.authorization_requests.get_request_direct_service
+  - flow:
+      name: fondos
+      steps:
+        - step:
+            name: "auth-d"
+            caller: src.infrastructure.callers.authorization_requests.get_request_direct_service
+        - step:
+            name: "fondos-sf"
+            caller: src.infrastructure.callers.funds_request_caller.get_request_direct_service
+  - flow:
+      name: deposito-legado
+      steps:
+        - step:
+            name: "auth-legacy"
+            caller: src.infrastructure.callers.legacy_request_caller.get_auth_request
+        - step:
+            name: "depositos"
+            caller: src.infrastructure.callers.legacy_request_caller.get_request_direct_service
