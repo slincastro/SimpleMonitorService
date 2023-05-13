@@ -16,6 +16,7 @@ def execute_call(caller, name, trace_id, writer, flow_name, date):
 
     except Exception as e:
          service_response_builder.with_response_text(e.args[0])
+         print(e)
 
     service_response =service_response_builder.build()
 

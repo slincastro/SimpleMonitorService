@@ -1,5 +1,5 @@
 hoursToMonitor: 9
-delayTimeInMinutes: 0.01
+delayTimeInMinutes: 1
 flows:
   - flow:
       name : authenticacion
@@ -20,11 +20,14 @@ flows:
             name: "fondos-sf"
             caller: src.infrastructure.callers.funds_request_caller.get_request_direct_service
   - flow:
-      name: deposito-legado
+      name: depositos
       steps:
         - step:
-            name: "auth-legacy"
-            caller: src.infrastructure.callers.legacy_request_caller.get_auth_request
+            name: "auth-sf"
+            caller: src.infrastructure.callers.deposits_request_caller.get_request_with_sf
         - step:
-            name: "depositos"
-            caller: src.infrastructure.callers.legacy_request_caller.get_request_direct_service
+            name: "depositos-sf"
+            caller: src.infrastructure.callers.deposits_request_caller.get_request_security_filter
+        - step:
+            name: "depositos-direct"
+            caller: src.infrastructure.callers.deposits_request_caller.get_request_direct_service

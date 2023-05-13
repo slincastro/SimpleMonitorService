@@ -41,7 +41,7 @@ def test_should_get_empty_token_when_request_is_not_ok():
 
 def test_should_get_sesscookie():
     response = '<TCFX><HEADERRS SESSCOOKIE="12345678"/></TCFX>'
-    sess_cookie = request_parser.get_sesscookie(response)
+    sess_cookie = request_parser.get_session_cookie(response)
 
     assert sess_cookie == '12345678'
 

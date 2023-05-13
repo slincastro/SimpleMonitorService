@@ -38,7 +38,7 @@ class ServiceResponseBuilder:
         self.response = response
         self.status_code = response.status_code
         self.time_to_response = response.elapsed.total_seconds()
-        self.response_text = response.text
+        self.response_text = "" if response.status_code == 200 else response.text
         return self
 
     def with_name(self, name):
